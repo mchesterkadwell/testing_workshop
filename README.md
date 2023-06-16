@@ -1,54 +1,61 @@
 # Testing Workshop
 
-Project to teach a testing workshop
+Completed exemplar project for a workshop that covers how to write tests and code together, how to run tests and
+automate test running on collaborative projects.
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 License: MIT
 
-## Settings
+## Note
 
-Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
+- This is an example app that should _not_ be run in production.
 
-## Basic Commands
+## Quick Start
 
-### Setting Up Your Users
+Here are the steps to run the Django app locally in development mode.
 
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+### Prerequisites
 
-- To create a **superuser account**, use this command:
+This application runs in containers on Docker with Docker Compose. You should have installed Docker and Docker Compose.
 
-      $ python manage.py createsuperuser
+### Build the Code
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+Clone this repository:
 
-### Type checks
+`$ git clone https://github.com/mchesterkadwell/testing_workshop.git`
 
-Running type checks with mypy:
+Build the Docker stack with the local configuration. This make take a few minutes:
 
-    $ mypy testing_workshop
+`$ docker compose -f local.yml build`
 
-### Test coverage
+### Run the Application
 
-To run the tests, check your test coverage, and generate an HTML coverage report:
+Run the Docker stack with the local configuration:
 
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
+`$ docker compose -f local.yml up`
 
-#### Running tests with pytest
+You can view the web application locally at: http://localhost:8000/
 
-    $ pytest
+### Run the Tests
 
-### Live reloading and Sass CSS compilation
+To run the tests:
 
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
+`$ docker compose -f local.yml run --rm django pytest`
 
-## Deployment
+To generate an HTML coverage report:
 
-The following details how to deploy this application.
+`$ docker compose -f local.yml run --rm django coverage html`
 
-### Docker
+Now you can view the report by opening it in a browser: `htmlcov/index.html`
 
-See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+### Optional
+
+Run the database migrations. They should run on startup, but just in case you can do it manually:
+
+`$ docker compose -f local.yml run --rm django python manage.py migrate`
+
+Create a superuser. It is not important what you choose here as we do not use authentication in the application:
+
+`$ docker compose -f local.yml run --rm django python manage.py createsuperuser`

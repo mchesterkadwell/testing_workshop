@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+      {% block content %}
+
+        <p>This project has been written for a workshop on testing, covering how to write tests and code together,
+          how to run tests and how to automate test running on collaborative projects. </p>
+
+        <p>The finished project allows the user to retrieve a transcription of a letter from an external website,
+          automatically generate named entities for tokens in the transcription, and display the named entities
+          alongside an image of the original letter page.</p>
+
+        <p>To get started go to <a href="{% url 'ner' %}">Named Entity Recognition</a></p>
+
+      {% endblock content %}

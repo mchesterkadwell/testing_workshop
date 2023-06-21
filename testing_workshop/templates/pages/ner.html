@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+      {% block content %}
+
+        <form method="post">
+          {% csrf_token %}
+          <p class="fs-5 mt-3">Perform Named Entity Recognition on the transcription of a Darwin letter from
+            <a href="https://cudl.lib.cam.ac.uk/collections/darwinhooker/1">Cambridge Digital Library</a>. </p>
+          <p>Example url: <b>https://cudl.lib.cam.ac.uk/view/MS-DAR-00100-00001/1</b></p>
+          {{ form.as_p }}
+          <input class="button" type="submit" value="Get Transcription">
+        </form>
+
+        {% if xml_title %}
+        <div class="container" style="margin-top: 2em">
+          <h2 class="text-center">{{ xml_title }}</h2>
+
+          {%  if iiif_image %}
+          <img class="img-fluid"
+               style="padding: 3%; border-radius: 11% / 18% ;"
+               alt="Image of {{ xml_title }}"
+               src="{{ iiif_image }}"/>
+          {% endif %} {# iiif_image #}
+
+          {%  if viz_html %}
+          <div class="container border px-5 pt-5">
+            {{ viz_html|safe }}
+          </div>
+          {% endif %} {# viz_html #}
+
+        {% endif %} {# xml_title #}
+
+      {% endblock content %}

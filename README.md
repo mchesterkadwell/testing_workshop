@@ -1,6 +1,6 @@
 # Testing Workshop
 
-Completed exemplar project for a workshop that covers how to write tests and code together, how to run tests and
+Template project for a workshop that covers how to write tests and code together, how to run tests and
 automate test running on collaborative projects.
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)

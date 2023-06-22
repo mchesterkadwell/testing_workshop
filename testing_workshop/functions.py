@@ -75,15 +75,8 @@ class DigitalLibraryPage:
 
     def get_iiif_image_url(self):
         """Returns the IIIF social media image of the page."""
-        response = requests.get(self.url)
-        if response.status_code == 200:
-            html = BeautifulSoup(response.text, features="lxml")
-            return html.head.find(property="og:image")["content"]
-        # NB: Cambridge Digital Library returns inappropriate 500 status code for pages not found
-        if response.status_code == 500:
-            raise FileNotFoundAtUrl(f"Page not found at URL: {self.url}")
-        else:
-            response.raise_for_status()
+        # Exercise 2 - fill in the implementation here
+        pass
 
 
 class NamedEntityDocument:

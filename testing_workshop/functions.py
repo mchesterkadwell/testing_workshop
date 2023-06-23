@@ -25,7 +25,7 @@ class Letter:
 
     def __init__(self, xml):
         self.xml = xml
-        self.tree = BeautifulSoup(xml, features="lxml")
+        self.tree = BeautifulSoup(xml, features="xml")
         self._set_title()
         self._set_transcription()
 

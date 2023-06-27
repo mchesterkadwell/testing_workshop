@@ -1,6 +1,9 @@
 exclude: '^docs/|/migrations/'
 default_stages: [commit]
 
+default_language_version:
+  node: latest
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

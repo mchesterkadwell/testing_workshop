@@ -12,8 +12,6 @@ from spacy.tokens import Doc as SpacyDoc
 from testing_workshop.exceptions import FileNotFoundAtUrl
 from testing_workshop.functions import DigitalLibraryPage, Letter
 
-IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
-
 
 class TestLetter:
     def test_get_title(self, letter_xml):
@@ -21,7 +19,7 @@ class TestLetter:
         title = letter.get_title()
         assert title == "Letter from  Hooker to Darwin"
 
-    @pytest.mark.skipif(IN_GITHUB_ACTIONS, reason="Skip failing test in GitHub Actions.")
+    @pytest.mark.skipif(os.getenv("CI"), reason="Skip deliberately failing test in CI.")
     def test_get_transcription(self):
         # Exercise 1 - fill in body of test
         assert False

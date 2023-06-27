@@ -5,7 +5,14 @@ env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
 
-# Exercise 4 - add the 'on' directive here
+on:
+  pull_request:
+    branches: [ 'main' ]
+    paths-ignore: [ 'docs/**' ]
+
+  push:
+    branches: ['main'] # Exercise 4 - add your branch name here
+    paths-ignore: ['docs/**']
 
 concurrency:
   group: ${{ github.head_ref || github.run_id }}

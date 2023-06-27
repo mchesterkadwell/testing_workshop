@@ -7,8 +7,8 @@ env:
 
 on:
   pull_request:
-    branches: [ 'main' ]
-    paths-ignore: [ 'docs/**' ]
+    branches: ['main']
+    paths-ignore: ['docs/**']
 
   push:
     branches: ['main'] # Exercise 4 - add your branch name here

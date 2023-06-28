@@ -19,7 +19,7 @@ class TestLetter:
         title = letter.get_title()
         assert title == "Letter from  Hooker to Darwin"
 
-    @pytest.mark.skipif(os.getenv("CI"), reason="Skip deliberately failing test in CI.")
+    @pytest.mark.skipif("CI" in os.environ, reason="Skip deliberately failing test in CI.")
     def test_get_transcription(self):
         # Exercise 1 - fill in body of test
         assert False

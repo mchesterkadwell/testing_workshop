@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from testing_workshop.functions import DigitalLibraryPage, Letter
 
@@ -9,6 +10,7 @@ from .forms import NerTextForm
 # from testing_workshop.functions import NamedEntityDocument
 
 
+@csrf_exempt
 def ner(request):
     """View function for retrieving the transcription of a Darwin letter from XML."""
 

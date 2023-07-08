@@ -20,8 +20,10 @@ class TestLetter:
         assert title == "Letter from  Hooker to Darwin"
 
     @pytest.mark.skipif("CI" in os.environ, reason="Skip deliberately failing test in CI.")
-    def test_get_transcription(self):
-        # Exercise 1 - fill in body of test
+    def test_get_transcription(self, letter_xml):
+        letter = Letter(letter_xml)  # ARRANGE
+        transcription = letter.get_transcription()  # noqa: F841 # ACT
+        # Exercise 1 - fill in ASSERTION
         assert False
 
 

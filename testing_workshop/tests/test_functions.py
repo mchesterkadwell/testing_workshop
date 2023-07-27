@@ -72,6 +72,6 @@ class TestNamedEntityDocument:
         soup = BeautifulSoup(ner_doc.ner_viz_html(), features="lxml")
         assert soup.find("div", {"class": "entities"})
 
-    def clean_text_removes_contractions(self, ner_doc):
+    def test_clean_text_removes_contractions(self, ner_doc):
         clean_text = ner_doc.clean_text("& && &c&c &c   ")
-        assert clean_text == "and &and etcetc etc "
+        assert clean_text == "and &and etcetc etc"
